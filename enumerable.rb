@@ -12,4 +12,12 @@ module Enumerable
       yield self[i], i
     end
   end
+
+  def my_select
+    aux_array = []
+    length.times do |i|
+      aux_array << self[i] if yield self[i]
+    end
+    aux_array
+  end
 end
