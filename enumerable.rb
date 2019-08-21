@@ -49,4 +49,14 @@ module Enumerable
   def my_map(proc = nil)
     [].tap { |arr| my_each { |value| arr << (proc ? proc[value] : yield(value)) } }
   end
+
+  def my_inject(acc = nil)
+    if acc
+      rest = self
+    else
+      acc, *rest = self
+    end
+    rest.my_each { |val| acc = yield acc, val }
+    acc
+  end
 end
