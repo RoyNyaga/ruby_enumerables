@@ -39,10 +39,14 @@ module Enumerable
   def my_count
     count = 0
     if block_given?
-      my_each { |val| count += 1 if yield val }
+      my_each { |value| count += 1 if yield value }
     else
       my_each { count += 1 }
     end
     count
+  end
+
+  def my_map(proc = nil)
+    [].tap { |arr| my_each { |value| arr << (proc ? proc[value] : yield(value)) } }
   end
 end
