@@ -20,4 +20,9 @@ module Enumerable
     end
     aux_array
   end
+
+  def my_all?
+    my_each { |value| return false unless yield value }
+    true
+  end
 end
