@@ -25,4 +25,9 @@ module Enumerable
     my_each { |value| return false unless yield value }
     true
   end
+
+  def my_any?
+    my_each { |value| return true if yield value }
+    false
+  end
 end
