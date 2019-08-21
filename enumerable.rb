@@ -35,4 +35,14 @@ module Enumerable
     my_each { |value| return false if yield value }
     true
   end
+
+  def my_count
+    count = 0
+    if block_given?
+      my_each { |val| count += 1 if yield val }
+    else
+      my_each { count += 1 }
+    end
+    count
+  end
 end
