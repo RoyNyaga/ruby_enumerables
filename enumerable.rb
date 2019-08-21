@@ -30,4 +30,9 @@ module Enumerable
     my_each { |value| return true if yield value }
     false
   end
+
+  def my_none?
+    my_each { |value| return false if yield value }
+    true
+  end
 end
