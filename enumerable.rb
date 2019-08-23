@@ -42,12 +42,12 @@ module Enumerable
     true
   end
 
-  def my_count
+  def my_count(*arg)
     count = 0
-    if block_given?
-      my_each { |value| count += 1 if yield value }
+    if arg.empty?
+      block_given? ? length.times { |i| count += 1 if yield self[i] } : count = length
     else
-      my_each { count += 1 }
+      length.times { |i| count += 1 if self[i] == arg[0] }
     end
     count
   end
